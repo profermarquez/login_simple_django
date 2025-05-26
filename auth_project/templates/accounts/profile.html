@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Bienvenido, {{ user.username }}</h2>
+<p>Tu correo: {{ user.email }}</p>
+<p><a href="{% url 'password_change' %}">Cambiar contraseña</a></p>
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Cerrar sesión</button>
+</form>
+<nav>
+    <ul>
+        <li><a href="{% url 'blog_list' %}">Mis posts</a></li>
+        <li><a href="{% url 'blog_create' %}">Crear nuevo post</a></li>
+        {% if user.is_superuser %}
+            <li><a href="{% url 'asignar_permiso' %}">Asignar permisos</a></li>
+        {% endif %}
+        <li><a href="{% url 'online-users' %}">Ver usuarios en línea</a></li>
+    </ul>
+</nav>
+{% endblock %}

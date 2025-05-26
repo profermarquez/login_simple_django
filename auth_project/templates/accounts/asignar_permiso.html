@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Asignar permiso "can_publish"</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="username">Selecciona un usuario:</label>
+    <select name="username" id="username">
+        {% for usuario in usuarios %}
+            <option value="{{ usuario.username }}">{{ usuario.username }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Asignar permiso</button>
+</form>
+
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<p><a href="{% url 'profile' %}">Volver</a></p>
+{% endblock %}
