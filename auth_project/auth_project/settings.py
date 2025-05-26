@@ -60,6 +60,25 @@ MIDDLEWARE = [
      'django.contrib.messages.middleware.MessageMiddleware',
     'accounts.conteoMiddleware.LastSeenMiddleware',
 ]
+"""
+Aquí algunos de los middlewares más comunes e importantes:
+
+Middleware	Función
+-----------------------
+SecurityMiddleware  → 	Aplica medidas de seguridad como redirección a HTTPS, cabeceras seguras, etc.
+SessionMiddleware  → 	Habilita el uso de sesiones con cookies.
+CommonMiddleware  → 	Agrega cabeceras comunes, redirecciona si falta /, etc.
+CsrfViewMiddleware  → 	Protege contra ataques CSRF en formularios.
+AuthenticationMiddleware  → 	Agrega request.user y permite saber si alguien está autenticado.
+MessageMiddleware  → 	Permite usar el sistema de mensajes (messages) en vistas y templates.
+XFrameOptionsMiddleware  → 	Evita que tu sitio sea embebido en un iframe (protección contra clickjacking).
+
+corsheaders.middleware.CorsMiddleware → para habilitar CORS.
+
+debug_toolbar.middleware.DebugToolbarMiddleware → para depurar tu app en desarrollo.
+
+whitenoise.middleware.WhiteNoiseMiddleware → para servir archivos estáticos en producción (muy usado con Heroku).
+"""
 
 ROOT_URLCONF = "auth_project.urls"
 import os
